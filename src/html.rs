@@ -1,4 +1,4 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Local};
 use serde::Serialize;
 use serde_json::value::{from_value, to_value, Value};
 use std::array;
@@ -32,7 +32,7 @@ pub struct Config {
     fn_med_limit: f64,
     branch_hi_limit: f64,
     branch_med_limit: f64,
-    date: DateTime<Utc>,
+    date: DateTime<Local>,
 }
 
 static BULMA_VERSION: &str = "0.9.1";
@@ -45,7 +45,7 @@ pub fn get_config() -> (Tera, Config) {
         fn_med_limit: 75.,
         branch_hi_limit: 90.,
         branch_med_limit: 75.,
-        date: Utc::now(),
+        date: Local::now(),
     };
 
     let mut tera = Tera::default();
